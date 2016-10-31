@@ -3,7 +3,7 @@
 %global _docdir_fmt %{name}
 
 Name:           python-%{modname}
-Version:        4.8.3
+Version:        4.9.0
 Release:        1%{?dist}
 Summary:        A Fast, Extensible Progress Meter
 
@@ -85,6 +85,9 @@ Python 3 version.
 %{python3_sitelib}/%{modname}/
 
 %changelog
+* Mon Oct 31 2016 Igor Gnatenko <ignatenko@redhat.com> - 4.9.0-1
+- Update to 4.9.0
+
 * Tue Aug 16 2016 Igor Gnatenko <ignatenko@redhat.com> - 4.8.3-1
 - Update to 4.8.3
 

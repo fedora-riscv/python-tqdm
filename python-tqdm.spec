@@ -4,7 +4,7 @@
 
 Name:           python-%{modname}
 Version:        4.10.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A Fast, Extensible Progress Meter
 
 # see PACKAGE-LICENSING for more info
@@ -85,6 +85,9 @@ Python 3 version.
 %{python3_sitelib}/%{modname}/
 
 %changelog
+* Mon Dec 19 2016 Miro Hrončok <mhroncok@redhat.com> - 4.10.0-2
+- Rebuild for Python 3.6
+
 * Sun Nov 13 2016 Igor Gnatenko <i.gnatenko.brain@gmail.com> - 4.10.0-1
 - Update to 4.10.0
 

@@ -4,7 +4,7 @@
 
 Name:           python-%{modname}
 Version:        4.10.0
-Release:        2%{?dist}
+Release:        2%{?dist}.1
 Summary:        A Fast, Extensible Progress Meter
 
 # see PACKAGE-LICENSING for more info
@@ -20,71 +20,52 @@ tqdm (read taqadum, تقدّم) means "progress" in Arabic.\
 Instantly make your loops show a smart progress meter - just wrap any iterable\
 with "tqdm(iterable)", and you are done!
 
+
 %description %{_description}
+
 
 %package -n python2-%{modname}
 Summary:        %{summary}
-%{?python_provide:%python_provide python2-%{modname}}
-BuildRequires:  python2-devel
-BuildRequires:  python2-setuptools
-BuildRequires:  python2-nose
-BuildRequires:  python2-coverage
-BuildRequires:  python2-flake8
-BuildRequires:  python2-pandas
-BuildRequires:  python2-numpy
-Recommends:     python2-pandas
-Recommends:     python2-numpy
+BuildRequires:  python-devel
+BuildRequires:  python-setuptools
+BuildRequires:  python-nose
+BuildRequires:  python-coverage
+BuildRequires:  python-flake8
+
 
 %description -n python2-%{modname} %{_description}
 
 Python 2 version.
 
-%package -n python3-%{modname}
-Summary:        %{summary}
-%{?python_provide:%python_provide python3-%{modname}}
-BuildRequires:  python3-devel
-BuildRequires:  python3-setuptools
-BuildRequires:  python3-nose
-BuildRequires:  python3-coverage
-BuildRequires:  python3-flake8
-BuildRequires:  python3-pandas
-BuildRequires:  python3-numpy
-Recommends:     python3-pandas
-Recommends:     python3-numpy
-
-%description -n python3-%{modname} %{_description}
-
-Python 3 version.
 
 %prep
 %autosetup -n %{modname}-%{version}
 
+
 %build
 %py2_build
-%py3_build
+
 
 %install
 %py2_install
-%py3_install
+
 
 %check
 %{__python2} setup.py test
-%{__python3} setup.py test
 
 %files -n python2-%{modname}
 %license LICENCE
 %doc README.rst examples
+%{_bindir}/%{modname}
 %{python2_sitelib}/%{modname}-*.egg-info/
 %{python2_sitelib}/%{modname}/
 
-%files -n python3-%{modname}
-%license LICENCE
-%doc README.rst examples
-%{_bindir}/%{modname}
-%{python3_sitelib}/%{modname}-*.egg-info/
-%{python3_sitelib}/%{modname}/
 
 %changelog
+* Fri Jan 06 2017 Stephen Gallagher <sgallagh@redhat.com> - 4.10.0-2.1
+- Do not use Recommends of pandas and numpy on EPEL 6 and EPEL 7
+- Don't build python3 on EPEL
+
 * Mon Dec 19 2016 Miro Hrončok <mhroncok@redhat.com> - 4.10.0-2
 - Rebuild for Python 3.6
 

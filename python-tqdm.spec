@@ -3,8 +3,8 @@
 %global _docdir_fmt %{name}
 
 Name:           python-%{modname}
-Version:        4.10.0
-Release:        2%{?dist}
+Version:        4.11.1
+Release:        1%{?dist}
 Summary:        A Fast, Extensible Progress Meter
 
 # see PACKAGE-LICENSING for more info
@@ -85,6 +85,9 @@ Python 3 version.
 %{python3_sitelib}/%{modname}/
 
 %changelog
+* Fri Jan 20 2017 Igor Gnatenko <ignatenko@redhat.com> - 4.11.1-1
+- Update to 4.11.1
+
 * Mon Dec 19 2016 Miro Hrončok <mhroncok@redhat.com> - 4.10.0-2
 - Rebuild for Python 3.6
 

@@ -3,8 +3,8 @@
 %global _docdir_fmt %{name}
 
 Name:           python-%{modname}
-Version:        4.11.1
-Release:        2%{?dist}
+Version:        4.11.2
+Release:        1%{?dist}
 Summary:        A Fast, Extensible Progress Meter
 
 # see PACKAGE-LICENSING for more info
@@ -85,6 +85,9 @@ Python 3 version.
 %{python3_sitelib}/%{modname}/
 
 %changelog
+* Sat Feb 11 2017 Igor Gnatenko <ignatenkobrain@fedoraproject.org> - 4.11.2-1
+- Update to 4.11.2
+
 * Sat Feb 11 2017 Fedora Release Engineering <releng@fedoraproject.org> - 4.11.1-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_26_Mass_Rebuild
 

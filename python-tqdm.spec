@@ -4,7 +4,7 @@
 
 Name:           python-%{modname}
 Version:        4.10.0
-Release:        2%{?dist}.1
+Release:        2%{?dist}.2
 Summary:        A Fast, Extensible Progress Meter
 
 # see PACKAGE-LICENSING for more info
@@ -62,6 +62,9 @@ Python 2 version.
 
 
 %changelog
+* Thu Jun 01 2017 Stephen Gallagher <sgallagh@redhat.com> - 4.10.0-2.2
+- Bump and rebuild to work around bug in Bodhi
+
 * Fri Jan 06 2017 Stephen Gallagher <sgallagh@redhat.com> - 4.10.0-2.1
 - Do not use Recommends of pandas and numpy on EPEL 6 and EPEL 7
 - Don't build python3 on EPEL

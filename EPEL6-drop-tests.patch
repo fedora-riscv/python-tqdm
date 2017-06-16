@@ -1,0 +1,143 @@
+From 030bdfd498ea5849799a90f07006cc64f8abfb75 Mon Sep 17 00:00:00 2001
+From: Stephen Gallagher <sgallagh@redhat.com>
+Date: Fri, 16 Jun 2017 10:05:10 -0400
+Subject: [PATCH] EPEL: Drop "hard" performance tests
+
+Signed-off-by: Stephen Gallagher <sgallagh@redhat.com>
+---
+ tqdm/tests/tests_perf.py | 120 -----------------------------------------------
+ 1 file changed, 120 deletions(-)
+
+diff --git a/tqdm/tests/tests_perf.py b/tqdm/tests/tests_perf.py
+index d2b1566faaa21b5db57fa2612927df2067cd6823..3e4230749f6227d7ac7376ca867cd0cccf1719bf 100644
+--- a/tqdm/tests/tests_perf.py
++++ b/tqdm/tests/tests_perf.py
+@@ -206,125 +206,5 @@ def test_manual_overhead():
+     if time_tqdm() > 10 * time_bench():
+         raise AssertionError('tqdm(%g): %f, range(%g): %f' %
+                              (total, time_tqdm(), total, time_bench()))
+ 
+ 
+-@with_setup(pretest, posttest)
+-@retry_on_except()
+-def test_iter_overhead_hard():
+-    """ Test overhead of iteration based tqdm (hard) """
+-
+-    total = int(1e5)
+-
+-    with closing(MockIO()) as our_file:
+-        a = 0
+-        with relative_timer() as time_tqdm:
+-            for i in trange(total, file=our_file, leave=True,
+-                            miniters=1, mininterval=0, maxinterval=0):
+-                a += i
+-        assert(a == (total * total - total) / 2.0)
+-
+-        a = 0
+-        with relative_timer() as time_bench:
+-            for i in _range(total):
+-                a += i
+-                our_file.write(("%i" % a) * 40)
+-
+-    # Compute relative overhead of tqdm against native range()
+-    try:
+-        assert(time_tqdm() < 60 * time_bench())
+-    except AssertionError:
+-        raise AssertionError('trange(%g): %f, range(%g): %f' %
+-                             (total, time_tqdm(), total, time_bench()))
+-
+-
+-@with_setup(pretest, posttest)
+-@retry_on_except()
+-def test_manual_overhead_hard():
+-    """ Test overhead of manual tqdm (hard) """
+-
+-    total = int(1e5)
+-
+-    with closing(MockIO()) as our_file:
+-        t = tqdm(total=total * 10, file=our_file, leave=True,
+-                 miniters=1, mininterval=0, maxinterval=0)
+-        a = 0
+-        with relative_timer() as time_tqdm:
+-            for i in _range(total):
+-                a += i
+-                t.update(10)
+-
+-        a = 0
+-        with relative_timer() as time_bench:
+-            for i in _range(total):
+-                a += i
+-                our_file.write(("%i" % a) * 40)
+-
+-    # Compute relative overhead of tqdm against native range()
+-    try:
+-        assert(time_tqdm() < 100 * time_bench())
+-    except AssertionError:
+-        raise AssertionError('tqdm(%g): %f, range(%g): %f' %
+-                             (total, time_tqdm(), total, time_bench()))
+-
+-
+-@with_setup(pretest, posttest)
+-@retry_on_except()
+-def test_iter_overhead_simplebar_hard():
+-    """ Test overhead of iteration based tqdm vs simple progress bar (hard) """
+-
+-    total = int(1e4)
+-
+-    with closing(MockIO()) as our_file:
+-        a = 0
+-        with relative_timer() as time_tqdm:
+-            for i in trange(total, file=our_file, leave=True,
+-                            miniters=1, mininterval=0, maxinterval=0):
+-                a += i
+-        assert(a == (total * total - total) / 2.0)
+-
+-        a = 0
+-        with relative_timer() as time_bench:
+-            for i in simple_progress(_range(total), file=our_file,
+-                                     leave=True, miniters=1,
+-                                     mininterval=0):
+-                a += i
+-
+-    # Compute relative overhead of tqdm against native range()
+-    try:
+-        assert(time_tqdm() < 2 * time_bench())
+-    except AssertionError:
+-        raise AssertionError('trange(%g): %f, simple_progress(%g): %f' %
+-                             (total, time_tqdm(), total, time_bench()))
+-
+-
+-@with_setup(pretest, posttest)
+-@retry_on_except()
+-def test_manual_overhead_simplebar_hard():
+-    """ Test overhead of manual tqdm vs simple progress bar (hard) """
+-
+-    total = int(1e4)
+-
+-    with closing(MockIO()) as our_file:
+-        t = tqdm(total=total * 10, file=our_file, leave=True,
+-                 miniters=1, mininterval=0, maxinterval=0)
+-        a = 0
+-        with relative_timer() as time_tqdm:
+-            for i in _range(total):
+-                a += i
+-                t.update(10)
+-
+-        simplebar_update = simple_progress(total=total, file=our_file,
+-                                           leave=True, miniters=1,
+-                                           mininterval=0)
+-        a = 0
+-        with relative_timer() as time_bench:
+-            for i in _range(total):
+-                a += i
+-                simplebar_update(10)
+-
+-    # Compute relative overhead of tqdm against native range()
+-    try:
+-        assert(time_tqdm() < 2 * time_bench())
+-    except AssertionError:
+-        raise AssertionError('tqdm(%g): %f, simple_progress(%g): %f' %
+-                             (total, time_tqdm(), total, time_bench()))
+-- 
+2.13.0
+

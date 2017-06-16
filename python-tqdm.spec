@@ -4,13 +4,14 @@
 
 Name:           python-%{modname}
 Version:        4.10.0
-Release:        2%{?dist}.1
+Release:        2%{?dist}.2
 Summary:        A Fast, Extensible Progress Meter
 
 # see PACKAGE-LICENSING for more info
 License:        MPLv2.0 and MIT
 URL:            https://github.com/tqdm/tqdm
 Source0:        %{url}/archive/v%{version}/%{modname}-%{version}.tar.gz
+Patch0001:      EPEL6-drop-tests.patch
 
 BuildArch:      noarch
 
@@ -39,7 +40,7 @@ Python 2 version.
 
 
 %prep
-%autosetup -n %{modname}-%{version}
+%autosetup -n %{modname}-%{version} -p1
 
 
 %build
@@ -62,6 +63,9 @@ Python 2 version.
 
 
 %changelog
+* Fri Jun 16 2017 Stephen Gallagher <sgallagh@redhat.com> - 4.10.0-2.2
+- Don't run "hard" performance tests on EPEL 6
+
 * Fri Jan 06 2017 Stephen Gallagher <sgallagh@redhat.com> - 4.10.0-2.1
 - Do not use Recommends of pandas and numpy on EPEL 6 and EPEL 7
 - Don't build python3 on EPEL

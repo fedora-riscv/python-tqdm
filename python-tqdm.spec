@@ -3,7 +3,7 @@
 %global _docdir_fmt %{name}
 
 Name:           python-%{modname}
-Version:        4.14.0
+Version:        4.15.0
 Release:        1%{?dist}
 Summary:        A Fast, Extensible Progress Meter
 
@@ -85,6 +85,9 @@ Python 3 version.
 %{python3_sitelib}/%{modname}/
 
 %changelog
+* Sun Jul 23 2017 Igor Gnatenko <ignatenkobrain@fedoraproject.org> - 4.15.0-1
+- Update to 4.15.0
+
 * Thu Jun 01 2017 Igor Gnatenko <ignatenkobrain@fedoraproject.org> - 4.14.0-1
 - Update to 4.14.0
 

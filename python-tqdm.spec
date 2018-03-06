@@ -1,7 +1,7 @@
 %global modname tqdm
 
 Name:           python-%{modname}
-Version:        4.19.5
+Version:        4.19.6
 Release:        1%{?dist}
 Summary:        Fast, Extensible Progress Meter
 
@@ -73,6 +73,9 @@ mv -v %{buildroot}/%{_prefix}/man/* %{buildroot}/%{_mandir}
 %{python3_sitelib}/%{modname}/
 
 %changelog
+* Tue Mar 06 2018 Igor Gnatenko <ignatenkobrain@fedoraproject.org> - 4.19.6-1
+- Update to 4.19.6
+
 * Fri Feb 23 2018 Igor Gnatenko <ignatenkobrain@fedoraproject.org> - 4.19.5-1
 - Update to 4.19.5
 

@@ -2,7 +2,7 @@
 
 Name:           python-%{modname}
 Version:        4.19.6
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Fast, Extensible Progress Meter
 
 # see PACKAGE-LICENSING for more info
@@ -73,6 +73,9 @@ mv -v %{buildroot}/%{_prefix}/man/* %{buildroot}/%{_mandir}
 %{python3_sitelib}/%{modname}/
 
 %changelog
+* Tue Jun 19 2018 Miro Hrončok <mhroncok@redhat.com> - 4.19.6-2
+- Rebuilt for Python 3.7
+
 * Tue Mar 06 2018 Igor Gnatenko <ignatenkobrain@fedoraproject.org> - 4.19.6-1
 - Update to 4.19.6
 

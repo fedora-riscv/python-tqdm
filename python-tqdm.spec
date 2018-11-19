@@ -1,8 +1,8 @@
 %global modname tqdm
 
 Name:           python-%{modname}
-Version:        4.19.6
-Release:        3%{?dist}
+Version:        4.28.1
+Release:        1%{?dist}
 Summary:        Fast, Extensible Progress Meter
 
 # see PACKAGE-LICENSING for more info
@@ -51,8 +51,9 @@ Python 3 version.
 %py2_install
 %py3_install
 
-mkdir -p %{buildroot}%{_mandir}
-mv -v %{buildroot}/%{_prefix}/man/* %{buildroot}/%{_mandir}
+mkdir -p %{buildroot}%{_mandir}/man1/
+mv -v %{buildroot}%{python3_sitelib}/%{modname}/%{modname}.1 %{buildroot}%{_mandir}/man1/
+rm -fv %{buildroot}%{python3_sitelib}/%{modname}/%[modname}.1
 
 %check
 #{__python2} setup.py test
@@ -73,6 +74,9 @@ mv -v %{buildroot}/%{_prefix}/man/* %{buildroot}/%{_mandir}
 %{python3_sitelib}/%{modname}/
 
 %changelog
+* Mon Nov 19 2018 Ankur Sinha <ankursinha AT fedoraproject DOT org> - 4.28.1-1
+- Update to latest upstream release
+
 * Sat Jul 14 2018 Fedora Release Engineering <releng@fedoraproject.org> - 4.19.6-3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_29_Mass_Rebuild
 

@@ -2,7 +2,7 @@
 
 Name:           python-%{modname}
 Version:        4.28.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Fast, Extensible Progress Meter
 
 # see PACKAGE-LICENSING for more info
@@ -20,16 +20,6 @@ with "tqdm(iterable)", and you are done!
 
 %description %{_description}
 
-%package -n python2-%{modname}
-Summary:        %{summary}
-%{?python_provide:%python_provide python2-%{modname}}
-BuildRequires:  python2-devel
-BuildRequires:  python2-setuptools
-
-%description -n python2-%{modname} %{_description}
-
-Python 2 version.
-
 %package -n python3-%{modname}
 Summary:        %{summary}
 %{?python_provide:%python_provide python3-%{modname}}
@@ -44,26 +34,16 @@ Python 3 version.
 %autosetup -n %{modname}-%{version}
 
 %build
-%py2_build
 %py3_build
 
 %install
-%py2_install
 %py3_install
 
 mkdir -p %{buildroot}%{_mandir}/man1/
 mv -v %{buildroot}%{python3_sitelib}/%{modname}/%{modname}.1 %{buildroot}%{_mandir}/man1/
-rm -fv %{buildroot}%{python3_sitelib}/%{modname}/%[modname}.1
 
 %check
-#{__python2} setup.py test
 #{__python3} setup.py test
-
-%files -n python2-%{modname}
-%license LICENCE
-%doc README.rst examples
-%{python2_sitelib}/%{modname}-*.egg-info/
-%{python2_sitelib}/%{modname}/
 
 %files -n python3-%{modname}
 %license LICENCE
@@ -74,6 +54,9 @@ rm -fv %{buildroot}%{python3_sitelib}/%{modname}/%[modname}.1
 %{python3_sitelib}/%{modname}/
 
 %changelog
+* Tue Nov 20 2018 Igor Gnatenko <ignatenkobrain@fedoraproject.org> - 4.28.1-2
+- Drop python2 subpackage
+
 * Mon Nov 19 2018 Ankur Sinha <ankursinha AT fedoraproject DOT org> - 4.28.1-1
 - Update to latest upstream release
 

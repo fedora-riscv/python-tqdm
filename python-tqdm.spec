@@ -4,7 +4,7 @@
 
 Name:           python-%{modname}
 Version:        4.10.0
-Release:        2%{?dist}.2
+Release:        2%{?dist}.3
 Summary:        A Fast, Extensible Progress Meter
 
 # see PACKAGE-LICENSING for more info
@@ -38,20 +38,35 @@ BuildRequires:  python-flake8
 Python 2 version.
 
 
+
+%package -n python36-%{modname}
+Summary:        %{summary}
+BuildRequires:  python36-devel
+BuildRequires:  python36-setuptools
+
+
+%description -n python36-%{modname} %{_description}
+
+Python 3.6 version.
+
+
 %prep
 %autosetup -n %{modname}-%{version}
 
 
 %build
 %py2_build
+%py3_build
 
 
 %install
 %py2_install
+%py3_install
 
 
 %check
 %{__python2} setup.py test
+
 
 %files -n python2-%{modname}
 %license LICENCE
@@ -61,7 +76,18 @@ Python 2 version.
 %{python2_sitelib}/%{modname}/
 
 
+%files -n python36-%{modname}
+%license LICENCE
+%doc README.rst examples
+%{_bindir}/%{modname}
+%{python3_sitelib}/%{modname}-*.egg-info/
+%{python3_sitelib}/%{modname}/
+
+
 %changelog
+* Tue May 21 2019 Stephen Gallagher <sgallagh@redhat.com> - 4.10.0-2.3
+- Add python36 version
+
 * Thu Jun 01 2017 Stephen Gallagher <sgallagh@redhat.com> - 4.10.0-2.2
 - Bump and rebuild to work around bug in Bodhi
 

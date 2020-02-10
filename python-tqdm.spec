@@ -1,7 +1,7 @@
 %global modname tqdm
 
 Name:           python-%{modname}
-Version:        4.37.0
+Version:        4.41.1
 Release:        1%{?dist}
 Summary:        Fast, Extensible Progress Meter
 
@@ -54,6 +54,12 @@ mv -v %{buildroot}%{python3_sitelib}/%{modname}/%{modname}.1 %{buildroot}%{_mand
 %{python3_sitelib}/%{modname}/
 
 %changelog
+* Mon Feb 10 2020 Stephen Gallagher <sgallagh@redhat.com> - 4.41.1-1
+- Update to 4.41.1
+
+* Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 4.37.0-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild
+
 * Fri Nov 08 2019 Stephen Gallagher <sgallagh@redhat.com> - 4.37.0-1
 - Update to 4.37.0
 

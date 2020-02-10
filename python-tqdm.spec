@@ -1,7 +1,7 @@
 %global modname tqdm
 
 Name:           python-%{modname}
-Version:        4.41.1
+Version:        4.42.1
 Release:        1%{?dist}
 Summary:        Fast, Extensible Progress Meter
 
@@ -54,6 +54,9 @@ mv -v %{buildroot}%{python3_sitelib}/%{modname}/%{modname}.1 %{buildroot}%{_mand
 %{python3_sitelib}/%{modname}/
 
 %changelog
+* Mon Feb 10 2020 Stephen Gallagher <sgallagh@redhat.com> - 4.42.1-1
+- Update to 4.42.1
+
 * Mon Feb 10 2020 Stephen Gallagher <sgallagh@redhat.com> - 4.41.1-1
 - Update to 4.41.1
 

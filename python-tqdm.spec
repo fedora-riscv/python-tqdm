@@ -3,8 +3,8 @@
 %global _docdir_fmt %{name}
 
 Name:           python-%{modname}
-Version:        4.10.0
-Release:        2%{?dist}.3
+Version:        4.45.0
+Release:        1%{?dist}
 Summary:        A Fast, Extensible Progress Meter
 
 # see PACKAGE-LICENSING for more info
@@ -55,23 +55,28 @@ Python 3.6 version.
 
 
 %build
-%py2_build
 %py3_build
+%py2_build
 
 
 %install
-%py2_install
 %py3_install
+mv %{buildroot}%{_bindir}/%{modname} %{buildroot}%{_bindir}/%{modname}-%{python3_version}
 
+%py2_install
+mv %{buildroot}%{_bindir}/%{modname} %{buildroot}%{_bindir}/%{modname}-%{python2_version}
 
-%check
-%{__python2} setup.py test
+# Create symlinks
+ln -s ./%{modname}-%{python3-version} %{buildroot}%{_bindir}/%{modname}-3
+ln -s ./%{modname}-%{python2-version} %{buildroot}%{_bindir}/%{modname}-2
+ln -s ./%{modname}-%{python2-version} %{buildroot}%{_bindir}/%{modname}
 
 
 %files -n python2-%{modname}
 %license LICENCE
 %doc README.rst examples
 %{_bindir}/%{modname}
+%{_bindir}/%{modname}-2*
 %{python2_sitelib}/%{modname}-*.egg-info/
 %{python2_sitelib}/%{modname}/
 
@@ -79,12 +84,16 @@ Python 3.6 version.
 %files -n python36-%{modname}
 %license LICENCE
 %doc README.rst examples
-%{_bindir}/%{modname}
+%{_bindir}/%{modname}-3*
 %{python3_sitelib}/%{modname}-*.egg-info/
 %{python3_sitelib}/%{modname}/
 
 
 %changelog
+* Fri Apr 03 2020 Stephen Gallagher <sgallagh@redhat.com> - 4.45.0-1
+- Update to 4.45.0
+- Install /usr/bin/tqdm only for python2
+
 * Tue May 21 2019 Stephen Gallagher <sgallagh@redhat.com> - 4.10.0-2.3
 - Add python36 version
 

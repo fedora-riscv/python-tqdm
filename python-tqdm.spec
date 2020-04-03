@@ -1,7 +1,7 @@
 %global modname tqdm
 
 Name:           python-%{modname}
-Version:        4.42.1
+Version:        4.45.0
 Release:        1%{?dist}
 Summary:        Fast, Extensible Progress Meter
 
@@ -42,9 +42,6 @@ Python 3 version.
 mkdir -p %{buildroot}%{_mandir}/man1/
 mv -v %{buildroot}%{python3_sitelib}/%{modname}/%{modname}.1 %{buildroot}%{_mandir}/man1/
 
-%check
-#{__python3} setup.py test
-
 %files -n python3-%{modname}
 %license LICENCE
 %doc README.rst examples
@@ -54,6 +51,9 @@ mv -v %{buildroot}%{python3_sitelib}/%{modname}/%{modname}.1 %{buildroot}%{_mand
 %{python3_sitelib}/%{modname}/
 
 %changelog
+* Fri Apr 03 2020 Stephen Gallagher <sgallagh@redhat.com> - 4.45.0-1
+- Update to 4.45.0
+
 * Mon Feb 10 2020 Stephen Gallagher <sgallagh@redhat.com> - 4.42.1-1
 - Update to 4.42.1
 

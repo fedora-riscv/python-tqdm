@@ -3,7 +3,7 @@
 %global _docdir_fmt %{name}
 
 Name:           python-%{modname}
-Version:        4.45.0
+Version:        4.47.0
 Release:        1%{?dist}
 Summary:        A Fast, Extensible Progress Meter
 
@@ -90,6 +90,9 @@ ln -s ./%{modname}-%{python2-version} %{buildroot}%{_bindir}/%{modname}
 
 
 %changelog
+* Mon Jun 29 2020 Stephen Gallagher <sgallagh@redhat.com> - 4.47.0-1
+- Update to 4.47.0
+
 * Fri Apr 03 2020 Stephen Gallagher <sgallagh@redhat.com> - 4.45.0-1
 - Update to 4.45.0
 - Install /usr/bin/tqdm only for python2

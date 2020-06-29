@@ -1,8 +1,8 @@
 %global modname tqdm
 
 Name:           python-%{modname}
-Version:        4.45.0
-Release:        2%{?dist}
+Version:        4.47.0
+Release:        1%{?dist}
 Summary:        Fast, Extensible Progress Meter
 
 # see PACKAGE-LICENSING for more info
@@ -51,6 +51,9 @@ mv -v %{buildroot}%{python3_sitelib}/%{modname}/%{modname}.1 %{buildroot}%{_mand
 %{python3_sitelib}/%{modname}/
 
 %changelog
+* Mon Jun 29 2020 Stephen Gallagher <sgallagh@redhat.com> - 4.47.0-1
+- Update to 4.47.0
+
 * Tue May 26 2020 Miro Hrončok <mhroncok@redhat.com> - 4.45.0-2
 - Rebuilt for Python 3.9
 

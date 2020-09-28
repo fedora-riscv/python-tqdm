@@ -1,3 +1,7 @@
+*~
+*.swp
+tqdm-*/
+*.src.rpm
 /tqdm-4.8.3.tar.gz
 /tqdm-4.9.0.tar.gz
 /tqdm-4.10.0.tar.gz

@@ -3,7 +3,7 @@
 %global _docdir_fmt %{name}
 
 Name:           python-%{modname}
-Version:        4.50.0
+Version:        4.50.2
 Release:        1%{?dist}
 Summary:        Fast, Extensible Progress Meter
 
@@ -99,6 +99,9 @@ cp %{buildroot}%{python2_sitelib}/%{modname}/tqdm.1 \
 %{python3_sitelib}/%{modname}/
 
 %changelog
+* Fri Oct 09 2020 Stephen Gallagher <sgallagh@redhat.com> - 4.50.2-1
+- Update to 4.50.2
+
 * Mon Sep 28 2020 Stephen Gallagher <sgallagh@redhat.com> - 4.50.0-1
 - Update to 4.50.0
 

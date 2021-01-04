@@ -1,14 +1,15 @@
 %global modname tqdm
+%global srcname %{modname}
 
 Name:           python-%{modname}
-Version:        4.50.2
+Version:        4.55.1
 Release:        1%{?dist}
 Summary:        Fast, Extensible Progress Meter
 
 # see PACKAGE-LICENSING for more info
 License:        MPLv2.0 and MIT
 URL:            https://github.com/tqdm/tqdm
-Source0:        %{url}/archive/v%{version}/%{modname}-%{version}.tar.gz
+Source0:        %pypi_source
 
 BuildArch:      noarch
 
@@ -24,7 +25,8 @@ with "tqdm(iterable)", and you are done!
 Summary:        %{summary}
 %{?python_provide:%python_provide python3-%{modname}}
 BuildRequires:  python3-devel
-BuildRequires:  python3-setuptools
+BuildRequires:  python3-toml
+BuildRequires:  python3-setuptools_scm
 
 %description -n python3-%{modname} %{_description}
 
@@ -51,6 +53,9 @@ mv -v %{buildroot}%{python3_sitelib}/%{modname}/%{modname}.1 %{buildroot}%{_mand
 %{python3_sitelib}/%{modname}/
 
 %changelog
+* Mon Jan 04 2021 Stephen Gallagher <sgallagh@redhat.com> - 4.55.1-1
+- Update to 4.55.1
+
 * Fri Oct 09 2020 Stephen Gallagher <sgallagh@redhat.com> - 4.50.2-1
 - Update to 4.50.2
 

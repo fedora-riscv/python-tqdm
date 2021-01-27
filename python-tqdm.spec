@@ -3,7 +3,7 @@
 
 Name:           python-%{modname}
 Version:        4.56.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Fast, Extensible Progress Meter
 
 # see PACKAGE-LICENSING for more info
@@ -53,6 +53,9 @@ mv -v %{buildroot}%{python3_sitelib}/%{modname}/%{modname}.1 %{buildroot}%{_mand
 %{python3_sitelib}/%{modname}/
 
 %changelog
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 4.56.0-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
 * Mon Jan 25 2021 Stephen Gallagher <sgallagh@redhat.com> - 4.56.0-2
 - Don't hardcode python version
 

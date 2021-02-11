@@ -2,8 +2,8 @@
 %global srcname %{modname}
 
 Name:           python-%{modname}
-Version:        4.56.0
-Release:        3%{?dist}
+Version:        4.56.2
+Release:        1%{?dist}
 Summary:        Fast, Extensible Progress Meter
 
 # see PACKAGE-LICENSING for more info
@@ -53,6 +53,9 @@ mv -v %{buildroot}%{python3_sitelib}/%{modname}/%{modname}.1 %{buildroot}%{_mand
 %{python3_sitelib}/%{modname}/
 
 %changelog
+* Mon Jan 11 2021 Stephen Gallagher <sgallagh@redhat.com> - 4.56.2-1
+- Update to 4.56.2
+
 * Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 4.56.0-3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
 
@@ -60,7 +63,7 @@ mv -v %{buildroot}%{python3_sitelib}/%{modname}/%{modname}.1 %{buildroot}%{_mand
 - Don't hardcode python version
 
 * Mon Jan 11 2021 Stephen Gallagher <sgallagh@redhat.com> - 4.56.0-1
-- Update to 4.46.0
+- Update to 4.56.0
 
 * Mon Jan 04 2021 Stephen Gallagher <sgallagh@redhat.com> - 4.55.1-1
 - Update to 4.55.1

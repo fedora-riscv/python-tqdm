@@ -53,7 +53,7 @@ mv -v %{buildroot}%{python3_sitelib}/%{modname}/%{modname}.1 %{buildroot}%{_mand
 %{python3_sitelib}/%{modname}/
 
 %changelog
-* Mon Jan 11 2021 Stephen Gallagher <sgallagh@redhat.com> - 4.56.2-1
+* Thu Feb 11 2021 Stephen Gallagher <sgallagh@redhat.com> - 4.56.2-1
 - Update to 4.56.2
 
 * Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 4.56.0-3

@@ -2,7 +2,7 @@
 %global srcname %{modname}
 
 Name:           python-%{modname}
-Version:        4.55.1
+Version:        4.56.2
 Release:        1%{?dist}
 Summary:        Fast, Extensible Progress Meter
 
@@ -21,14 +21,14 @@ with "tqdm(iterable)", and you are done!
 
 %description %{_description}
 
-%package -n python3-%{modname}
+%package -n python%{python3_pkgversion}-%{modname}
 Summary:        %{summary}
-%{?python_provide:%python_provide python3-%{modname}}
-BuildRequires:  python3-devel
-BuildRequires:  python3-toml
-BuildRequires:  python3-setuptools_scm
+%{?python_provide:%python_provide python%{python3_pkgversion}-%{modname}}
+BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  python%{python3_pkgversion}-toml
+BuildRequires:  python%{python3_pkgversion}-setuptools_scm
 
-%description -n python3-%{modname} %{_description}
+%description -n python%{python3_pkgversion}-%{modname} %{_description}
 
 Python 3 version.
 
@@ -44,7 +44,7 @@ Python 3 version.
 mkdir -p %{buildroot}%{_mandir}/man1/
 mv -v %{buildroot}%{python3_sitelib}/%{modname}/%{modname}.1 %{buildroot}%{_mandir}/man1/
 
-%files -n python3-%{modname}
+%files -n python%{python3_pkgversion}-%{modname}
 %license LICENCE
 %doc README.rst examples
 %{_bindir}/%{modname}
@@ -53,6 +53,18 @@ mv -v %{buildroot}%{python3_sitelib}/%{modname}/%{modname}.1 %{buildroot}%{_mand
 %{python3_sitelib}/%{modname}/
 
 %changelog
+* Mon Jan 11 2021 Stephen Gallagher <sgallagh@redhat.com> - 4.56.2-1
+- Update to 4.56.2
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 4.56.0-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Mon Jan 25 2021 Stephen Gallagher <sgallagh@redhat.com> - 4.56.0-2
+- Don't hardcode python version
+
+* Mon Jan 11 2021 Stephen Gallagher <sgallagh@redhat.com> - 4.56.0-1
+- Update to 4.56.0
+
 * Mon Jan 04 2021 Stephen Gallagher <sgallagh@redhat.com> - 4.55.1-1
 - Update to 4.55.1
 

@@ -2,7 +2,7 @@
 %global srcname %{modname}
 
 Name:           python-%{modname}
-Version:        4.58.0
+Version:        4.59.0
 Release:        1%{?dist}
 Summary:        Fast, Extensible Progress Meter
 
@@ -53,6 +53,9 @@ mv -v %{buildroot}%{python3_sitelib}/%{modname}/%{modname}.1 %{buildroot}%{_mand
 %{python3_sitelib}/%{modname}/
 
 %changelog
+* Tue Mar 09 2021 Stephen Gallagher <sgallagh@redhat.com> - 4.59.0-1
+- Update to 4.59.0
+
 * Wed Mar 03 2021 Stephen Gallagher <sgallagh@redhat.com> - 4.58.0-1
 - Update to 4.58.0
 

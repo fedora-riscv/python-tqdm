@@ -2,8 +2,8 @@
 %global srcname %{modname}
 
 Name:           python-%{modname}
-Version:        4.60.0
-Release:        2%{?dist}
+Version:        4.61.0
+Release:        1%{?dist}
 Summary:        Fast, Extensible Progress Meter
 
 # see PACKAGE-LICENSING for more info
@@ -54,6 +54,9 @@ mv -v %{buildroot}%{python3_sitelib}/%{modname}/%{modname}.1 %{buildroot}%{_mand
 %{python3_sitelib}/%{modname}/
 
 %changelog
+* Wed Jun 30 2021 Stephen Gallagher <sgallagh@redhat.com> - 4.61.0-1
+- Update to 4.61.0
+
 * Wed Jun 02 2021 Python Maint <python-maint@redhat.com> - 4.60.0-2
 - Rebuilt for Python 3.10
 

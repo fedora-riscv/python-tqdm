@@ -57,6 +57,9 @@ mv -v %{buildroot}%{python3_sitelib}/%{modname}/%{modname}.1 %{buildroot}%{_mand
 * Wed Jun 30 2021 Stephen Gallagher <sgallagh@redhat.com> - 4.61.0-1
 - Update to 4.61.0
 
+* Wed Jun 02 2021 Python Maint <python-maint@redhat.com> - 4.60.0-2
+- Rebuilt for Python 3.10
+
 * Tue May 04 2021 Stephen Gallagher <sgallagh@redhat.com> - 4.60.0-1
 - Update to 4.60.0
 

@@ -2,8 +2,8 @@
 %global srcname %{modname}
 
 Name:           python-%{modname}
-Version:        4.61.1
-Release:        2%{?dist}
+Version:        4.62.0
+Release:        1%{?dist}
 Summary:        Fast, Extensible Progress Meter
 
 # see PACKAGE-LICENSING for more info
@@ -54,6 +54,9 @@ mv -v %{buildroot}%{python3_sitelib}/%{modname}/%{modname}.1 %{buildroot}%{_mand
 %{python3_sitelib}/%{modname}/
 
 %changelog
+* Mon Aug 02 2021 Stephen Gallagher <sgallagh@redhat.com> - 4.62.0-1
+- Update to 4.62.0
+
 * Tue Jul 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 4.61.1-2
 - Second attempt - Rebuilt for
   https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild

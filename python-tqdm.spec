@@ -26,6 +26,19 @@ Summary:        %{summary}
 %{?python_provide:%python_provide python3-%{modname}}
 BuildRequires:  python3-devel
 
+# tox.ini contains coverage and unpackaged dependencies (nbval)
+BuildRequires:  python3-pytest
+BuildRequires:  python3-pytest-asyncio
+BuildRequires:  python3-pytest-timeout
+
+# optional test deps
+BuildRequires:  python3-tkinter
+BuildRequires:  python3-dask
+BuildRequires:  python3-numpy
+BuildRequires:  python3-pandas
+BuildRequires:  python3-rich
+#BuildRequires:  python3-keras -- not available
+
 %description -n python3-%{modname} %{_description}
 
 Python 3 version.
@@ -34,8 +47,13 @@ Python 3 version.
 %autosetup -n %{modname}-%{version}
 chmod -x tqdm/completion.sh
 
+# https://github.com/tqdm/tqdm/pull/1292
+echo 'include tqdm/tqdm.1' >> MANIFEST.in
+echo 'include tqdm/completion.sh' >> MANIFEST.in
+
+
 %generate_buildrequires
-%pyproject_buildrequires
+%pyproject_buildrequires -r
 
 %build
 %pyproject_wheel
@@ -49,6 +67,9 @@ install -Dpm0644 \
 install -Dpm0644 \
   %{buildroot}%{python3_sitelib}/tqdm/completion.sh \
   %{buildroot}%{_datadir}/bash-completion/completions/tqdm.bash
+
+%check
+%pytest
 
 %files -n python3-%{modname} -f %{pyproject_files}
 %license LICENCE

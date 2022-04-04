@@ -10,7 +10,7 @@
 %endif
 
 Name:           python-%{modname}
-Version:        4.63.1
+Version:        4.64.0
 Release:        %autorelease
 Summary:        Fast, Extensible Progress Meter
 

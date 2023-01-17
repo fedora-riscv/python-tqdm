@@ -1,6 +1,11 @@
 %global modname tqdm
 %global srcname %{modname}
 
+%bcond_without bootstrap
+%if %{with bootstrap}
+%global _without_tests 1
+%endif
+
 # The tests only run on Fedora 37 and newer, due to a requirement on
 # pytest-asyncio >= 0.17
 %if 0%{?fedora} >= 37
